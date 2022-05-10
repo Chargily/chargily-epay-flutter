@@ -5,12 +5,12 @@ import 'package:dio/dio.dart' hide Headers;
 part 'chargily_api.g.dart';
 
 @RestApi(baseUrl: "https://epay.chargily.com.dz")
-abstract class RestClient {
-  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
+abstract class ChargilyApiClient {
+  factory ChargilyApiClient(Dio dio, {String baseUrl}) = _ChargilyApiClient;
 
   @Headers(<String, dynamic>{"Accept": "application/json"})
   @POST("/api/invoice")
-  Future<dynamic> createInvoice(
+  Future<ChargilyResponse> createInvoice(
       @Header("X-Authorization") apiKey, Invoice invoice);
 }
 
@@ -46,9 +46,18 @@ class Invoice {
   Map<String, dynamic> toJson() => _$InvoiceToJson(this);
 }
 
+@JsonSerializable()
 class ChargilyResponse {
   @JsonKey(name: "checkout_url")
   String? checkoutUrl;
+}
+
+@JsonSerializable()
+class PaymentResponse {
+  bool isSuccessful = false;
+  dynamic body;
+
+  PaymentResponse(this.isSuccessful, this.body);
 }
 
 enum PaymentMethod {

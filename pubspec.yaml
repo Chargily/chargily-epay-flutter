@@ -13,7 +13,8 @@ dependencies:
   retrofit: ^3.0.1+1 
   dio: ^4.0.6 
   built_value: ^8.3.0 
-  json_annotation: ^4.5.0 
+  json_annotation: ^4.5.0
+  fluent_validation: ^2.0.0 
 
 dev_dependencies:
   flutter_test:
