@@ -1,7 +1,9 @@
 name: chargily_flutter
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: Chargily Epay Gateway Flutter Package
+version: 1.0.0
+author: Chakhoum Ahmed (github.com/rainxh11)
+homepage: https://github.com/rainxh11/chargily-epay-flutter
+repository: https://github.com/rainxh11/chargily-epay-flutter
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
