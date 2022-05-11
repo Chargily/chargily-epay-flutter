@@ -1,7 +1,6 @@
 name: chargily_flutter
 description: Chargily Epay Gateway Flutter Package
 version: 1.0.0
-author: Chakhoum Ahmed (github.com/rainxh11)
 homepage: https://github.com/rainxh11/chargily-epay-flutter
 repository: https://github.com/rainxh11/chargily-epay-flutter
 
@@ -17,6 +16,7 @@ dependencies:
   built_value: ^8.3.0 
   json_annotation: ^4.5.0
   fluent_validation: ^2.0.0 
+  logger: any  
 
 dev_dependencies:
   flutter_test:
