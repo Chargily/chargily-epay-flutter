@@ -35,6 +35,26 @@ const _$PaymentMethodEnumMap = {
   PaymentMethod.CIB: 'CIB',
 };
 
+ChargilyResponse _$ChargilyResponseFromJson(Map<String, dynamic> json) =>
+    ChargilyResponse()..checkoutUrl = json['checkout_url'] as String?;
+
+Map<String, dynamic> _$ChargilyResponseToJson(ChargilyResponse instance) =>
+    <String, dynamic>{
+      'checkout_url': instance.checkoutUrl,
+    };
+
+PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
+    PaymentResponse(
+      json['isSuccessful'] as bool,
+      json['body'],
+    );
+
+Map<String, dynamic> _$PaymentResponseToJson(PaymentResponse instance) =>
+    <String, dynamic>{
+      'isSuccessful': instance.isSuccessful,
+      'body': instance.body,
+    };
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
