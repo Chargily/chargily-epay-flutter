@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/rainxh11/chargily-epay-flutter/master/assets/chargily_flutter.svg" heigh="300">
+
 # chargily-epay-flutter
 Flutter Package for Chargily ePay Gateway
 
