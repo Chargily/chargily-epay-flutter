@@ -1,6 +1,6 @@
-library chargily_flutter;
+library chargily_epay_flutter;
 
-import 'package:chargily_flutter/validations.dart';
+import 'package:chargily_epay_flutter/validations.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
