@@ -1,6 +1,6 @@
-import 'package:retrofit/retrofit.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:dio/dio.dart' hide Headers;
+import 'package:json_annotation/json_annotation.dart';
+import 'package:retrofit/retrofit.dart';
 
 part 'chargily_api.g.dart';
 
@@ -12,6 +12,16 @@ abstract class ChargilyApiClient {
   @POST("/api/invoice")
   Future<ChargilyResponse> createInvoice(
       @Header("X-Authorization") apiKey, Invoice invoice);
+}
+
+@JsonSerializable()
+class ChargilyResponse {
+  @JsonKey(name: "checkout_url")
+  String? checkoutUrl;
+
+  ChargilyResponse({this.checkoutUrl});
+  factory ChargilyResponse.fromJson(Map<String, dynamic> json) =>
+      _$ChargilyResponseFromJson(json);
 }
 
 @JsonSerializable()
@@ -46,10 +56,11 @@ class Invoice {
   Map<String, dynamic> toJson() => _$InvoiceToJson(this);
 }
 
-@JsonSerializable()
-class ChargilyResponse {
-  @JsonKey(name: "checkout_url")
-  String? checkoutUrl;
+enum PaymentMethod {
+  @JsonValue('EDAHABIA')
+  EDAHABIA,
+  @JsonValue('CIB')
+  CIB
 }
 
 @JsonSerializable()
@@ -58,11 +69,4 @@ class PaymentResponse {
   dynamic body;
 
   PaymentResponse(this.isSuccessful, this.body);
-}
-
-enum PaymentMethod {
-  @JsonValue('EDAHABIA')
-  EDAHABIA,
-  @JsonValue('CIB')
-  CIB
 }

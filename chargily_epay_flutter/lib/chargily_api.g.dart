@@ -6,6 +6,16 @@ part of 'chargily_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+ChargilyResponse _$ChargilyResponseFromJson(Map<String, dynamic> json) =>
+    ChargilyResponse(
+      checkoutUrl: json['checkout_url'] as String?,
+    );
+
+Map<String, dynamic> _$ChargilyResponseToJson(ChargilyResponse instance) =>
+    <String, dynamic>{
+      'checkout_url': instance.checkoutUrl,
+    };
+
 Invoice _$InvoiceFromJson(Map<String, dynamic> json) => Invoice(
       client: json['client'] as String?,
       clientEmail: json['client_email'] as String?,
@@ -35,14 +45,6 @@ const _$PaymentMethodEnumMap = {
   PaymentMethod.CIB: 'CIB',
 };
 
-ChargilyResponse _$ChargilyResponseFromJson(Map<String, dynamic> json) =>
-    ChargilyResponse()..checkoutUrl = json['checkout_url'] as String?;
-
-Map<String, dynamic> _$ChargilyResponseToJson(ChargilyResponse instance) =>
-    <String, dynamic>{
-      'checkout_url': instance.checkoutUrl,
-    };
-
 PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
     PaymentResponse(
       json['isSuccessful'] as bool,
@@ -59,10 +61,13 @@ Map<String, dynamic> _$PaymentResponseToJson(PaymentResponse instance) =>
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
 class _ChargilyApiClient implements ChargilyApiClient {
-  _ChargilyApiClient(this._dio, {this.baseUrl}) {
+  _ChargilyApiClient(
+    this._dio, {
+    this.baseUrl,
+  }) {
     baseUrl ??= 'https://epay.chargily.com.dz';
   }
 
@@ -71,21 +76,31 @@ class _ChargilyApiClient implements ChargilyApiClient {
   String? baseUrl;
 
   @override
-  Future<ChargilyResponse> createInvoice(apiKey, invoice) async {
+  Future<ChargilyResponse> createInvoice(
+    apiKey,
+    invoice,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
       r'Accept': 'application/json',
-      r'X-Authorization': apiKey
+      r'X-Authorization': apiKey,
     };
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ChargilyResponse>(
-            Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/api/invoice',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ChargilyResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/invoice',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ChargilyResponse.fromJson(_result.data!);
     return value;
   }
