@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:dio/dio.dart' hide Headers;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
