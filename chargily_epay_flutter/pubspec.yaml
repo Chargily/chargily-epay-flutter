@@ -11,18 +11,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  retrofit: ^3.0.1+1
-  dio: ^4.0.6
+  retrofit: ^4.0.1
+  dio: ^5.3.2
   built_value: ^8.3.0
   json_annotation: ^4.7.0
   fluent_validation: ^2.0.0
-  logger: ^1.1.0
+  logger: ^2.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
-  retrofit_generator: ^4.0.1
+  flutter_lints: ^2.0.2
+  retrofit_generator: ^7.0.8
   build_runner: ^2.1.10
   json_serializable: ^6.2.0
   built_value_generator: ^8.3.0
